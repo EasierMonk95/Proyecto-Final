@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/personajes">
+        <file>enemyM1V1.png</file>
+        <file>enemyM2V1.png</file>
+        <file>p1.png</file>
+        <file>charactergreen.png</file>
+        <file>characterred.png</file>
+    </qresource>
+    <qresource prefix="/escenario">
+        <file>selvaV2.png</file>
+    </qresource>
+</RCC>
