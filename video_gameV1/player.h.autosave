@@ -3,6 +3,7 @@
 
 #include <QGraphicsPixmapItem>
 #include <QObject>
+#include <QKeyEvent>
 
 class Player: public QObject, public QGraphicsPixmapItem
 {
