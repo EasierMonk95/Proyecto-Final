@@ -18,13 +18,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     enemym1.cpp \
     game.cpp \
+    health.cpp \
     main.cpp \
-    player.cpp
+    player.cpp \
+    score.cpp
 
 HEADERS += \
     enemym1.h \
     game.h \
-    player.h
+    health.h \
+    player.h \
+    score.h
 
 FORMS += \
     widget.ui

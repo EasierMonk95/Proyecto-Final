@@ -18,7 +18,8 @@ public:
     Player * player2;
     EnemyM1 *Enemy;
 
-
+private:
+    short level=0;
 };
 
 #endif // GAME_H
