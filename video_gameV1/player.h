@@ -9,8 +9,13 @@ class Player: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Player(short color, QGraphicsItem *parent =0);
-    void keyPressEvent(short color,QKeyEvent *event);
+    Player(short color);//, QGraphicsItem *parent =0);
+    //void keyPressEvent(QKeyEvent *event);
+    void pintura();
+    void posicion();
+
+private:
+    short personaje;
 };
 
 #endif // PLAYER_H
