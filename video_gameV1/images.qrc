@@ -3,8 +3,8 @@
         <file>enemyM1V1.png</file>
         <file>enemyM2V1.png</file>
         <file>p1.png</file>
-        <file>charactergreen.png</file>
-        <file>characterred.png</file>
+        <file>Sprites_p1/characterred.png</file>
+        <file>Sprites_p2/charactergreen.png</file>
     </qresource>
     <qresource prefix="/escenario">
         <file>selvaV2.png</file>

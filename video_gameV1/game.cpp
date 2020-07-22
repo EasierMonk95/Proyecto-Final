@@ -3,7 +3,7 @@
 #include <QTimer>
 #include <QObject>
 
-Game::Game(QWidget * parent)
+Game::Game(bool ban,QWidget * parent)
 {
     scene->setSceneRect(0,0,7000,750);
     if (level==0){
@@ -20,21 +20,15 @@ Game::Game(QWidget * parent)
     view->resize(800,600);
     this->resize(800,600);
 
-    //player1 = new Player(0);
-//    if (botton ==2){
-//        player2 = new Player (1);
-//    }
-    //scene->addItem(player1);
+    if (ban==false){
+        rects.push_back(new Player(jugador=0));
+        scene->addItem(rects.back());
+    }
+    else{
+        rects.push_back(new Player(jugador=1));
+        scene->addItem(rects.back());
+    }
 
-    //player1->setPos(60,600);
-    //view->centerOn(player1);
-    rects.push_back(new Player(0));
-    scene->addItem(rects.back());
-
-//    if(botton==1){
-//        rects.push_back(new Player(1));
-//        scene->addItem(rects.back());
-//    }
 
     view->centerOn(rects.at(0)->x(),rects.at(0)->y());
 

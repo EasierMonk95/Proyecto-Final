@@ -1,15 +1,18 @@
 #include <QApplication>
 #include "game.h"
 #include "player.h"
+#include "login.h"
 
-Game *game;
+
+Login *log;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    game = new Game();
-    game->show();
+    log= new Login();
+    log->show();
+//    log->close();
 
     return a.exec();
 }

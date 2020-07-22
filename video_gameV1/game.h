@@ -13,16 +13,17 @@
 class Game: public QGraphicsView
 {
 public:
-    Game(QWidget *parent = 0);
+    Game(bool ban,QWidget *parent = 0);
 
-    Player * player1;
-    Player * player2;
+//    Player * player1;
+//    Player * player2;
     EnemyM1 *Enemy;
     QList <Player *> rects;
     void keyPressEvent(QKeyEvent *event);
 
 private:
     short level=0;
+    short jugador;
     QGraphicsView * view = new QGraphicsView(this);
     QGraphicsScene *scene = new QGraphicsScene(this);
 };

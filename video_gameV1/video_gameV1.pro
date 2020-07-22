@@ -19,6 +19,7 @@ SOURCES += \
     enemym1.cpp \
     game.cpp \
     health.cpp \
+    login.cpp \
     main.cpp \
     player.cpp \
     score.cpp
@@ -27,10 +28,12 @@ HEADERS += \
     enemym1.h \
     game.h \
     health.h \
+    login.h \
     player.h \
     score.h
 
 FORMS += \
+    login.ui \
     widget.ui
 
 # Default rules for deployment.
