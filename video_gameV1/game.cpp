@@ -3,6 +3,9 @@
 #include <QTimer>
 #include <QObject>
 
+
+extern Player *papa;
+
 Game::Game(bool ban,QWidget * parent)
 {
     scene->setSceneRect(0,0,7000,750);
@@ -20,17 +23,27 @@ Game::Game(bool ban,QWidget * parent)
     view->resize(800,600);
     this->resize(800,600);
 
-    if (ban==false){
-        rects.push_back(new Player(jugador=0));
+    if (ban==false){                            //En este caso se seleciono un solo jugador
+        rects.push_back(new Player(0));
         scene->addItem(rects.back());
     }
-    else{
-        rects.push_back(new Player(jugador=1));
+    else{                                       //En este otro caso se selecciono el multijugador (dos jugadores)
+        rects.push_back(new Player(1));
         scene->addItem(rects.back());
     }
 
 
     view->centerOn(rects.at(0)->x(),rects.at(0)->y());
 
+    score = new Score();        //Se crea la variable score
+    scene->addItem(score);      //Se incluye en la escena
+
+
+
+    Enemy = new EnemyM1(0,0);
+    scene->addItem(Enemy);
+    Enemy->setPos(100,600);
+
 
 }
+

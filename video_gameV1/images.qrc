@@ -1,10 +1,47 @@
 <RCC>
     <qresource prefix="/personajes">
-        <file>enemyM1V1.png</file>
-        <file>enemyM2V1.png</file>
         <file>p1.png</file>
         <file>Sprites_p1/characterred.png</file>
         <file>Sprites_p2/charactergreen.png</file>
+        <file>Sprites_Enemy2/enemyM2V1.png</file>
+        <file>Sprites_Enemy2/enemyM2V1AT1.png</file>
+        <file>Sprites_Enemy2/enemyM2V1AT2.png</file>
+        <file>Sprites_Enemy2/enemyM2V1H1.png</file>
+        <file>Sprites_Enemy1/enemyM1V1.png</file>
+        <file>Sprites_Enemy3/enemyM3V3.png</file>
+        <file>Sprites_Enemy3/enemyM3V3AT1.png</file>
+        <file>Sprites_Enemy3/enemyM3V3AT2.png</file>
+        <file>Sprites_Enemy1/enemyM1ATK1.png</file>
+        <file>Sprites_Enemy1/enemyM1V2.png</file>
+        <file>Sprites_Enemy1/enemyM1V3.png</file>
+        <file>Sprites_Enemy2/enemyM2V2.png</file>
+        <file>Sprites_Enemy3/enemyM3V4.png</file>
+        <file>Sprites_p1/characterred_LEFT.png</file>
+        <file>Sprites_p2/charactergreen_LEFT.png</file>
+        <file>Sprites_p1/Caminar1.png</file>
+        <file>Sprites_p1/Caminar2.png</file>
+        <file>Sprites_p1/Caminar3.png</file>
+        <file>Sprites_p1/Caminar4.png</file>
+        <file>Sprites_p1/Caminar5.png</file>
+        <file>Sprites_p1/Caminar6.png</file>
+        <file>Sprites_p1/Caminar7.png</file>
+        <file>Sprites_p1/Caminar8.png</file>
+        <file>Sprites_p1/Caminar9.png</file>
+        <file>Sprites_p1/Caminar10.png</file>
+        <file>Sprites_p1/Caminar11.png</file>
+        <file>Sprites_p1/Caminar12.png</file>
+        <file>Sprites_p1/Caminar13.png</file>
+        <file>Sprites_p1/Caminar14.png</file>
+        <file>Sprites_p1/Caminar15.png</file>
+        <file>Sprites_p1/Caminar16.png</file>
+        <file>Sprites_p1/Caminar17.png</file>
+        <file>Sprites_p1/Caminar18.png</file>
+        <file>Sprites_p1/Caminar19.png</file>
+        <file>Sprites_p1/characterred2.png</file>
+        <file>Sprites_p1/characterred3.png</file>
+        <file>Sprites_p1/characterred4.png</file>
+        <file>Sprites_p1/characterred5.png</file>
+        <file>Sprites_p1/characterred6.png</file>
     </qresource>
     <qresource prefix="/escenario">
         <file>selvaV2.png</file>
