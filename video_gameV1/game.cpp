@@ -40,10 +40,18 @@ Game::Game(bool ban,QWidget * parent)
 
 
 
-    Enemy = new EnemyM1(0,0);
-    scene->addItem(Enemy);
-    Enemy->setPos(100,600);
+    //Enemy = new EnemyM1();
+    //scene->addItem(Enemy);
+    //Enemy->setPos(500,600);
 
 
+    health = new Health();
+    scene->addItem(health);
+    health->setPos(50,200);
+
+
+    enemigo= new EnemyM1;
+    scene->addItem(enemigo);
+    enemigo->setPos(300,550);
 }
 

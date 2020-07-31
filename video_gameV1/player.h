@@ -8,14 +8,16 @@
 class Player: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
-public:
+public:                                                                             //Clase que hace funcionar a el jugador controlado por el usuario
     Player(short color);//, QGraphicsItem *parent =0);
     //void keyPressEvent(QKeyEvent *event);
-    void pintura(short movimiento);
+    void pintura(short movimiento, bool side);
     void posicion();
+    void attack_Enemy();
 
 private:
     short personaje;
+    bool side = true;
     //short movimiento;
 };
 

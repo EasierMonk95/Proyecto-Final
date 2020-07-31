@@ -1,66 +1,86 @@
 #include "enemym1.h"
-#include <QTimer>
+#include "game.h"
+#include "player.h"
+#include <QDebug>
 
-EnemyM1::EnemyM1(short type, short move)
+extern Player *player;
+extern Game *game;
+
+EnemyM1::EnemyM1()
 {
-//    QTimer *timer = new QTimer();
-//    timer->start(1000);
+    setPixmap(QPixmap(":/Enemy/Sprites_Enemy1/enemyM1V1.png").scaled(100,100));
+    TimerX = new QTimer;
+    TimerX->stop();
+    connect(TimerX, SIGNAL(timeout()),this,SLOT(moverX()));
+    TimerX->start(50);
+    TimerY = new QTimer;
+    TimerY->stop();
+    connect(TimerY, SIGNAL(timeout()),this,SLOT(moverY()));
+    TimerY->start(50);
 
-    if (type == 0){
-        if (move == 0){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V1.png"));
-            move = 1;
-        }
-        else if (move == 1 ){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V2.png"));
-            move = 0;
-        }
-        else if (move == 2){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V3.png"));
-        }
-        else if (move == 3){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1ATK1.png"));
-        }
-    }
-
-    else if (type == 1){
-        if (move == 0){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V1.png"));
-        }
-        else if (move == 1){
-             setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V2.png"));
-        }
-        else if (move == 2){
-             setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V1AT1.png"));
-        }
-        else if (move == 3){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V1AT2.png"));
-        }
-        else if (move == 4){
-            setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V1H1.png"));
-        }
-        else if (move == 5){
-             setPixmap(QPixmap(":/personajes/Sprites_Enemy3/enemyM3V4.png"));
-        }
-    }
-
-    else if (type == 2){
-
-    }
-
-    else if (type == 3){
-
-    }
-
-    else if (type == 4){
-
-    }
-
-    else if (type == 5){
-
-    }
-
-    else if (type == 6){
-
-    }
 }
+
+void EnemyM1::moverX(){
+    posX = game->posicionActualX();
+    int xx=1;
+    qDebug()<<pos().x();
+    qDebug()<<posX<<" "<<posY;
+
+
+    if(pos().x()>posX && cercaX==false){
+        setPos(x()-4,y());
+    }
+
+    else if(pos().x()<posX && cercaX==false){
+        setPos(x()+4,y());
+    }
+
+    else if(pos().x()-posX<6 || posX-pos().x()<6){
+        cercaX=true;
+    }
+
+    else if(pos().x()-posX>6 || posX-pos().x()>6){
+        cercaX=false;
+    }
+
+
+
+}
+
+void EnemyM1::moverY(){
+
+    posY = game->posicionActualY();
+
+    if (pos().y()<posY && cercaY==false) {
+        setPos(x(),y()+4);
+    }
+
+    else if (pos().y()>posY && cercaY==false) {
+        setPos(x(),y()-4);
+    }
+
+    else if (pos().y()-posY!=0) {
+        cercaY=false;
+    }
+
+    else if(pos().y()-posY==0){
+        cercaY=true;
+    }
+
+}
+
+int Game::posicionActualX(){
+    Player * a = rects.at(jugador);
+    return a->pos().x();
+}
+
+int Game::posicionActualY(){
+    Player *a = rects.at(jugador);
+    return a->pos().y();
+}
+
+void EnemyM1::pintura()
+{
+
+}
+

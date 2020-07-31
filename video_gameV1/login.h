@@ -12,7 +12,7 @@ class Login : public QDialog
 {
     Q_OBJECT
 
-public:
+public:                                                             //QDialog que muestra el menu de inicio o login
     explicit Login(QWidget *parent = nullptr);
     ~Login();
 
@@ -20,6 +20,10 @@ private slots:
     void on_J1_clicked();
 
     void on_J2_clicked();
+
+    void on_NewGame_clicked();
+
+    void on_LoadGame_clicked();
 
 private:
     Ui::Login *ui;

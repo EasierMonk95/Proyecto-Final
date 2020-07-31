@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -24,9 +24,23 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QPushButton" name="NewGame">
+      <property name="text">
+       <string>Nuevo Juego</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="J1">
       <property name="text">
        <string>1 Jugador</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="LoadGame">
+      <property name="text">
+       <string>Cargar Partida</string>
       </property>
      </widget>
     </item>
