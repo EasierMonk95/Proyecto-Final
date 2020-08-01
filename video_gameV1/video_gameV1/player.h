@@ -11,12 +11,13 @@ class Player: public QObject, public QGraphicsPixmapItem
 public:
     Player(short color);//, QGraphicsItem *parent =0);
     //void keyPressEvent(QKeyEvent *event);
-    void pintura(int img);
+    void pintura(short movimiento, bool side);
     void posicion();
 
 private:
     short personaje;
-    int img;
+    bool side=true;
+    //short movimiento;
 };
 
 #endif // PLAYER_H

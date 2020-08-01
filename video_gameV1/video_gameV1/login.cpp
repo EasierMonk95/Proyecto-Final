@@ -18,7 +18,7 @@ Login::~Login()
 void Login::on_J1_clicked()
 {
     game= new Game(false);
-    game->show();
+    game->show();    
 }
 
 void Login::on_J2_clicked()

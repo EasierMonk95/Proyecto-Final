@@ -2,6 +2,7 @@
 #define GAME_H
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QWidget>
 #include <QGraphicsView>
@@ -15,18 +16,25 @@ class Game: public QGraphicsView
 public:
     Game(bool ban,QWidget *parent = 0);
 
-//    Player * player1;
-//    Player * player2;
-    EnemyM1 *Enemy;
-    QList <Player *> rects;
-    void keyPressEvent(QKeyEvent *event);
+    QList <Player *> rects;    
+
+    QGraphicsPixmapItem **enemigo;
+    int *F;
+    void keyPressEvent(QKeyEvent *event);    
+    int posicionActualX();
+    int posicionActualY();
+    bool collidesE();
 
 private:
     short level=0;
     short jugador;
-    int img;
+    short cambiacion=1;
+    int max;
+    bool right;
+    bool cercaX=false;
+    bool cercaY=false;
     QGraphicsView * view = new QGraphicsView(this);
-    QGraphicsScene *scene = new QGraphicsScene(this);
+    QGraphicsScene *scene = new QGraphicsScene(this);       
 };
 
 #endif // GAME_H
