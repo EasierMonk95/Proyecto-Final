@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/personajes">
-        <file>p1.png</file>
         <file>Sprites_p2/charactergreen.png</file>
         <file>Sprites_p2/charactergreen_LEFT.png</file>
         <file>Sprites_p1/Caminar1.png</file>
@@ -118,10 +117,12 @@
         <file>Sprites_Enemy3/enemyM3V3AT1.png</file>
         <file>Sprites_Enemy3/enemyM3V3AT2.png</file>
         <file>Sprites_Enemy3/enemyM3V4.png</file>
+        <file>Jefe1/Jefe1_V2.png</file>
+        <file>Jefe2/Jefe2_V1.png</file>
+        <file>Jefe2/Jefe2_V2.png</file>
     </qresource>
     <qresource prefix="/escenario">
         <file>selvaV2.png</file>
-        <file>Level II All.jpg</file>
         <file>Sprites_p1/characterredAttack1.png</file>
         <file>Sprites_p1/characterredAttack2.png</file>
         <file>Sprites_p1/characterredAttack3.png</file>
@@ -130,5 +131,40 @@
         <file>Sprites_p2/charactergreenAttack2.png</file>
         <file>Sprites_p2/charactergreenAttack3.png</file>
         <file>Sprites_p2/charactergreenAttack4.png</file>
+        <file>Level_II_All.jpg</file>
+        <file>Sprites_p2/charactergreenAttack1_left.png</file>
+        <file>Sprites_p2/charactergreenAttack2_left.png</file>
+        <file>Sprites_p2/charactergreenAttack3_left.png</file>
+        <file>Sprites_p2/charactergreenAttack4_left.png</file>
+        <file>Sprites_p1/characterredAttack1_left.png</file>
+        <file>Sprites_p1/characterredAttack2_left.png</file>
+        <file>Sprites_p1/characterredAttack3_left.png</file>
+        <file>Sprites_p1/characterredAttack4_left.png</file>
+        <file>Level_II_AllNight.jpg</file>
+        <file>selvaV3.png</file>
+    </qresource>
+    <qresource prefix="/Barra_life">
+        <file>Sprites_Life/Life_0.png</file>
+        <file>Sprites_Life/Life_5.png</file>
+        <file>Sprites_Life/Life_10.png</file>
+        <file>Sprites_Life/Life_15.png</file>
+        <file>Sprites_Life/Life_20.png</file>
+        <file>Sprites_Life/Life_25.png</file>
+        <file>Sprites_Life/Life_30.png</file>
+        <file>Sprites_Life/Life_35.png</file>
+        <file>Sprites_Life/Life_45.png</file>
+        <file>Sprites_Life/Life_50.png</file>
+        <file>Sprites_Life/Life_60.png</file>
+        <file>Sprites_Life/Life_65.png</file>
+        <file>Sprites_Life/Life_70.png</file>
+        <file>Sprites_Life/Life_75.png</file>
+        <file>Sprites_Life/Life_80.png</file>
+        <file>Sprites_Life/Life_85.png</file>
+        <file>Sprites_Life/Life_90.png</file>
+        <file>Sprites_Life/Life_95.png</file>
+        <file>Sprites_Life/Life_100.png</file>
+    </qresource>
+    <qresource prefix="/Cuchillos">
+        <file>Balas/Bala_V1.png</file>
     </qresource>
 </RCC>

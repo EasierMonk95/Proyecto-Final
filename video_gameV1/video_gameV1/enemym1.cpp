@@ -2,11 +2,11 @@
 #include <QDebug>
 
 extern Game *game;
+extern Health *salud;
+extern Player *player;
 
 EnemyM1::EnemyM1(int Fi)
-{
-    //if(F==1)setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V1.png"));
-    //if (F==2) setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V1.png"));
+{        
     F = Fi;
     Img = 0;
     TimerX = new QTimer;
@@ -20,34 +20,90 @@ EnemyM1::EnemyM1(int Fi)
 }
 
 void EnemyM1::moverX(){
-    posX = game->posicionActualX();    
-   /* qDebug()<<pos().x();
-    qDebug()<<posX<<" "<<posY;*/
-
+    posX = game->posicionActualX();
 
     if(pos().x()>posX && cercaX==false){
-        setPos(x()-4,y());
+        setPos(x()-3,y());
         SetImg();
+        if(collidesWithItem(game->rects.at(game->jugador))){//|| collidesWithItem(game->rects.at(1))
+            if(game->collidesAttack){
+                game->collidesAttack = false;
+                game->score->increase(game->level, false);
+                if(!game->enemigo.isEmpty()){
+                  delete this;
+                }
 
+            }
+            else{
+                setPos(x()+40,y());
+                game->health->decrease(false);
+                if(game->health->getHealth() == 0){
+                    if(game->Numj == 2){
+                        game->ScoreActual[game->jugador] = game->score->getScore();
+                        if(game->jugador == 0){
+                            game->rects[game->jugador]->setVisible(false);
+                            game->jugador = 1;
+                            game->rects[game->jugador]->setVisible(true);
+                        }
+                        else{
+                            game->rects[game->jugador]->setVisible(false);
+                            game->jugador = 0;
+                            game->rects[game->jugador]->setVisible(true);
+                            game->level = game->level + 1;
+                        }
+                        game->startlevel();
+                    }
+                    else{
+                        game->level = game->level + 1;
+                        game->ScoreActual[game->jugador] = game->score->getScore();
+                        game->startlevel();
+                    }
+                }
+            }
+        }
     }    
 
     else if(pos().x()<posX && cercaX==false){
-        setPos(x()+4,y());
+        setPos(x()+3,y());
         SetImg();
+        if(collidesWithItem(game->rects.at(game->jugador))){//|| collidesWithItem(game->rects.at(1))
+            if(game->collidesAttack){
+                game->collidesAttack = false;
+                game->score->increase(game->level, false);
+                if(!game->enemigo.isEmpty()){
+                  delete this;
+                }
+
+            }
+            else{
+                setPos(x()-40,y());
+                game->health->decrease(false);
+                if(game->health->getHealth() == 0){
+                    if(game->Numj == 2){
+                        game->ScoreActual[game->jugador] = game->score->getScore();
+                        if(game->jugador == 0){
+                            game->rects[game->jugador]->setVisible(false);
+                            game->jugador = 1;
+                            game->rects[game->jugador]->setVisible(true);
+                        }
+                        else{
+                            game->rects[game->jugador]->setVisible(false);
+                            game->jugador = 0;
+                            game->rects[game->jugador]->setVisible(true);
+                            game->level = game->level + 1;
+                        }
+                        game->startlevel();
+                    }
+                    else{
+                        game->level = game->level + 1;
+                        game->ScoreActual[game->jugador] = game->score->getScore();
+                        game->startlevel();
+                    }
+                }
+            }
+        }
+
     }
-
-    else if(pos().x()-posX<6 || posX-pos().x()<6){
-        cercaX=true;
-        //game->collidesE();
-
-    }
-
-    else if(pos().x()-posX>6 || posX-pos().x()>6){
-        cercaX=false;
-    }
-
-
-
 }
 
 void EnemyM1::moverY(){
@@ -55,14 +111,18 @@ void EnemyM1::moverY(){
     posY = game->posicionActualY();
 
     if (pos().y()<posY && cercaY==false) {
-        setPos(x(),y()+4);
-        SetImg();
+        setPos(x(),y()+4);        
     }
 
     else if (pos().y()>posY && cercaY==false) {
-        setPos(x(),y()-4);
-        SetImg();
+        setPos(x(),y()-4);        
     }
+    else if(pos().y()-posY>4){
+        setPos(x(),y()-1);
+        }
+    else if(posY-pos().y()<4){
+        setPos(x(),y()+1);
+        }
 
     else if (pos().y()-posY!=0) {
         cercaY=false;
@@ -75,7 +135,7 @@ void EnemyM1::moverY(){
 }
 
 void EnemyM1::SetImg(){
-    qDebug()<<F<<" "<<Img;
+   // qDebug()<<F<<" "<<Img;
     if(F==1){
         if(Img==0){
             setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V1.png"));
@@ -100,19 +160,44 @@ void EnemyM1::SetImg(){
             Img=0;
         }
     }
+    else if(F==3){
+        if(Img==0){
+            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V1.png"));
+            Img=1;
+        }
+        else if(Img==1){
+            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V2.png"));
+            Img=2;
+        }
+        else if(Img==2){
+            setPixmap(QPixmap(":/personajes/Sprites_Enemy1/enemyM1V3.png"));
+            Img=0;
+        }
+    }
+    else if(F==4){
+        if(Img==0){
+            setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V1.png"));
+            Img=1;
+        }
+        else if(Img==1){
+            setPixmap(QPixmap(":/personajes/Sprites_Enemy2/enemyM2V2.png"));
+            Img=0;
+        }
+    }
 }
 
-/*bool Game::collidesE(){
-    if(rects.at(jugador)->collidesWithItem(Enemy)) return true;
-}*/
 
 int Game::posicionActualX(){
+    //qDebug()<<jugador;
     Player * a = rects.at(jugador);
+    a->setTransformOriginPoint(30,30);
     return a->pos().x();
 }
 
 int Game::posicionActualY(){
+    //qDebug()<<jugador;
     Player *a = rects.at(jugador);
+    a->setTransformOriginPoint(30,30);
     return a->pos().y();
 }
 

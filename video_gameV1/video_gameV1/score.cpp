@@ -12,17 +12,33 @@ Score::Score(QGraphicsItem *parent): QGraphicsTextItem(parent)
 
 }
 
-void Score::increase(short level){
+void Score::increase(short level, bool Boss){
 
-    if (level==0){      //Dependiendo del nivel el puntaje cambia
+    if (level==1){      //Dependiendo del nivel el puntaje cambia
         score++;
-    }
-    else if (level==1){
-        score+=3;
+        if (Boss){
+            score+=10;
+        }
     }
     else if (level==2){
-        score+=5;
+        score+=3;
+        if (Boss){
+            score+=15;
+        }
     }
+    else if (level==3){
+        score+=5;
+        if (Boss){
+            score+=20;
+        }
+    }
+    else if (level==4){
+        score+=7;
+        if (Boss){
+            score+=25;
+        }
+    }
+
 
     setPlainText(QString("Puntaje: ")+QString::number(score)); //Cada vez que aumente el puntaje se vera en pantalla
 
@@ -30,4 +46,9 @@ void Score::increase(short level){
 
 int Score::getScore(){
     return score;
+}
+
+void Score::setScore(int Newscore){
+    score = Newscore;
+    setPlainText(QString("Puntaje: ")+QString::number(score));
 }
