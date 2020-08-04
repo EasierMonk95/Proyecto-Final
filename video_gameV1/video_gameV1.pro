@@ -16,7 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    balitas.cpp \
+    bolin_fisica.cpp \
+    boss.cpp \
     enemym1.cpp \
+    flechas_fisica2.cpp \
     game.cpp \
     health.cpp \
     login.cpp \
@@ -25,7 +29,11 @@ SOURCES += \
     score.cpp
 
 HEADERS += \
+    balitas.h \
+    bolin_fisica.h \
+    boss.h \
     enemym1.h \
+    flechas_fisica2.h \
     game.h \
     health.h \
     login.h \

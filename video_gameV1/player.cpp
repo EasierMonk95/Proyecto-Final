@@ -1,6 +1,7 @@
 #include "player.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
+#include <QDebug>
 #include "game.h"
 
 
@@ -14,8 +15,10 @@ Player::Player(short color)//, QGraphicsItem *parent): QGraphicsPixmapItem()
 }
 
 void Game::keyPressEvent(QKeyEvent *event){            //Funcion que sirve para poder manipular el personaje
+    //qDebug()<<jugador;
     Player * a = rects.at(jugador);
         if(event->key() == Qt::Key_W ){
+            collidesAttack = false;
             if(a->pos().y()>420)a->setPos(a->x(),a->y()-5);         //En ella se accede a otra funcion para poder  aparentar
             view->centerOn(a->x(),a->y());                                  //animaciones
          if(right==true){
@@ -176,7 +179,8 @@ void Game::keyPressEvent(QKeyEvent *event){            //Funcion que sirve para 
          }
         }
         if(event->key() == Qt::Key_S){
-            if(a->pos().y()<580)a->setPos(a->x(),a->y()+5);
+            collidesAttack = false;
+            if(a->pos().y()<640)a->setPos(a->x(),a->y()+5);
             view->centerOn(a->x(),a->y());
           if(right==true){
             if (cambiacion == 1){
@@ -336,8 +340,13 @@ void Game::keyPressEvent(QKeyEvent *event){            //Funcion que sirve para 
           }
         }
         if(event->key() == Qt::Key_A){
+             collidesAttack = false;
             if(a->pos().x()>5)a->setPos(a->x()-5,a->y());
-            view->centerOn(rects.at(0)->x(),rects.at(0)->y());
+            view->centerOn(rects.at(jugador)->x(),rects.at(jugador)->y());
+                if(a->pos().x()>395){
+                    health->setPos(a->x()-330,200);
+                    score->setPos(a->x()-330,250);
+                }
             right=false;
 
             if (cambiacion == 1){
@@ -418,8 +427,13 @@ void Game::keyPressEvent(QKeyEvent *event){            //Funcion que sirve para 
             }
         }
         if(event->key() == Qt::Key_D){
-            if(a->pos().x()<6910)a->setPos(a->x()+5,a->y());
+            collidesAttack = false;
+            if(a->pos().x()<6910)a->setPos(a->x()+5,a->y());            
             view->centerOn(a->x(),a->y());
+                if(a->pos().x()>395){
+                    health->setPos(a->x()-330,200);
+                    score->setPos(a->x()-330,250);
+                 }
             right=true;
 
             if (cambiacion == 1){
@@ -499,7 +513,115 @@ void Game::keyPressEvent(QKeyEvent *event){            //Funcion que sirve para 
                 cambiacion = 1;
             }
     }
+       if(event->key() == Qt::Key_Space){
+                collidesAttack = true;
+            if(right){
+                if(cambio == 1){
+                    a->pinturaAttack(1, right);
+                    cambio = 2;
+                }
+                else if (cambio == 2){
+                    a->pinturaAttack(2, right);
+                    cambio = 3;
+                }
+                else if (cambio == 3){
+                    a->pinturaAttack(3, right);
+                    cambio = 4;
+                }
+                else if (cambio == 4){
+                    a->pinturaAttack(4,right);
+                    cambio = 1;
+                }
+            }
+            else if(!right){
+                if(cambio == 1){
+                    a->pinturaAttack(1, right);
+                    cambio = 2;
+                }
+                else if (cambio == 2){
+                    a->pinturaAttack(2, right);
+                    cambio = 3;
+                }
+                else if (cambio == 3){
+                    a->pinturaAttack(3, right);
+                    cambio = 4;
+                }
+                else if (cambio == 4){
+                    a->pinturaAttack(4,right);
+                    cambio = 1;
+                }
+            }
+        }
+       if (event->key() == Qt::Key_G){
+           bola = new Bolin_fisica();
+           scene->addItem(bola);
+        }
 
+}
+
+
+
+void Player::pinturaAttack(short movimiento, bool side){
+    if(personaje == 0){
+        if(side){
+            if (movimiento == 1){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack1.png"));
+                }
+            else if (movimiento == 2){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack2.png"));
+            }
+            else if (movimiento == 3){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack3.png"));
+            }
+            else if (movimiento == 4){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack4.png"));
+            }
+        }
+        if(!side){
+            if (movimiento == 1){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack1_left.png"));
+                }
+            else if (movimiento == 2){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack2_left.png"));
+            }
+            else if (movimiento == 3){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack3_left.png"));
+            }
+            else if (movimiento == 4){
+                setPixmap(QPixmap(":/escenario/Sprites_p1/characterredAttack4_left.png"));
+            }
+        }
+    }
+    if(personaje == 1){
+        if(side){
+            if(movimiento==1){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack1.png"));
+            }
+            else if(movimiento==2){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack2.png"));
+            }
+            else if(movimiento==3){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack3.png"));
+            }
+            else if(movimiento==4){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack4.png"));
+            }
+        }
+        else if(!side){
+            if(movimiento==1){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack1_left.png"));
+            }
+            else if(movimiento==2){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack2_left.png"));
+            }
+            else if(movimiento==3){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack3_left.png"));
+            }
+            else if(movimiento==4){
+              setPixmap(QPixmap(":/escenario/Sprites_p2/charactergreenAttack4_left.png"));
+            }
+        }
+    }
 }
 
 void Player::pintura(short movimiento, bool side){                //Fucion que sirve para ir cambiando de imagenes y aparentar un tipo de animacion
@@ -711,7 +833,7 @@ void Player::pintura(short movimiento, bool side){                //Fucion que s
              setPixmap(QPixmap(":/personajes/Sprites_p2/caminarverde8_left.png"));
         }
         else if (movimiento == 9){
-             setPixmap(QPixmap(":/personajes/Sprites_p2/caminarverde9_left.png"));
+             setPixmap(QPixmap(":/personajes/Sprites_p2/caminarverde9ddd_left.png"));
         }
         else if (movimiento == 10){
              setPixmap(QPixmap(":/personajes/Sprites_p2/caminarverde10_left.png"));

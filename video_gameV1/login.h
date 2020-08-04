@@ -21,6 +21,10 @@ private slots:
 
     void on_J2_clicked();
 
+    void on_NewGame_clicked();
+
+    void on_LoadGame_clicked();
+
 private:
     Ui::Login *ui;
     Game *games;

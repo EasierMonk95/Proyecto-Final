@@ -7,6 +7,8 @@
 #include <QList>
 #include "player.h"
 #include "game.h"
+#include "health.h"
+
 
 
 class EnemyM1: public QObject, public QGraphicsPixmapItem
@@ -15,8 +17,8 @@ class EnemyM1: public QObject, public QGraphicsPixmapItem
 Q_OBJECT
 
 public:
-    EnemyM1(int Fi);
-    QList<Player *> rects;    
+    EnemyM1(int Fi); // QList<Player *>rects
+    //QList<Player *> rects;
     QTimer *TimerX;
     QTimer *TimerY;
     QTimer *set;
